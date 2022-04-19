@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,11 +43,21 @@ public class PetController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> remove(@PathVariable("id") Long idPet){
 		
-		Pet pet = repository.findById(idPet).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não existe cadastro de autor para o id informado"));
+		Pet pet = repository.findById(idPet).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não existe cadastro de pet para o id informado"));
 		
 		repository.delete(pet);
 		
 		return ResponseEntity.noContent().build();
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<?> detalhar(@PathVariable("id") Long idPet){
+		
+		Pet pet = repository.findById(idPet).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não existe cadastro de pet para o id informado"));
+		
+		PetDetalhesDTO dto = new PetDetalhesDTO(pet);
+		
+		return ResponseEntity.ok(dto);
 	}
 	
 }

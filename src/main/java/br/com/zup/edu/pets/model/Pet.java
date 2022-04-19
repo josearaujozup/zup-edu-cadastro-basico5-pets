@@ -48,4 +48,16 @@ public class Pet {
 	public Long getId() {
 		return id;
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public TipoDoPet getTipo() {
+		return tipo;
+	}
+
+	public String getRaca() {
+		return raca;
+	}	
 }
