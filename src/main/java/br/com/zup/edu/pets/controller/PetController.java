@@ -1,6 +1,8 @@
 package br.com.zup.edu.pets.controller;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -58,6 +60,16 @@ public class PetController {
 		PetDetalhesDTO dto = new PetDetalhesDTO(pet);
 		
 		return ResponseEntity.ok(dto);
+	}
+	
+	@GetMapping
+	public ResponseEntity<?> detalhar(){
+		
+		List<Pet> pets = repository.findAll();
+		
+		List<PetDetalhesDTO> response = pets.stream().map(PetDetalhesDTO::new).collect(Collectors.toList());
+		
+		return ResponseEntity.ok(response);
 	}
 	
 }
