@@ -63,7 +63,7 @@ public class PetController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<?> detalhar(){
+	public ResponseEntity<?> listar(){
 		
 		List<Pet> pets = repository.findAll();
 		
