@@ -65,7 +65,7 @@ class DetalharPetControllerTest {
     }
 
     @Test
-    @DisplayName("Não deve detalhar uma música não cadastrada")
+    @DisplayName("Não deve detalhar um pet não cadastrado")
     void test2() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/pets/{id}", Integer.MAX_VALUE);
 
