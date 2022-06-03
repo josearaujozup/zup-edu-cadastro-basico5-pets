@@ -101,7 +101,7 @@ class CadastrarPetControllerTest {
     }
 
     @Test
-    @DisplayName("Não deve cadastrar um pet com data de nascimento no passado")
+    @DisplayName("Não deve cadastrar um pet com data de nascimento no presente ou futuro")
     void test3() throws Exception{
         //cenario
         PetRequest petRequest = new PetRequest("Bruno","Viralata", TipoPetRequest.GATO, LocalDate.now());
